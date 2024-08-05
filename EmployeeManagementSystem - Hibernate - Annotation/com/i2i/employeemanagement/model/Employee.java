@@ -6,8 +6,25 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Id;
 
+/**
+ * Represents an Employee in the organization.
+ * This class contains details about the employee's personal information,
+ * experience, place, department, and courses taken by the employee.
+ *
+ * @author paari
+ */
 @Entity
 @Table(name = "employees")
 public class Employee {

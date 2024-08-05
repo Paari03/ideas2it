@@ -1,9 +1,9 @@
 package com.i2i.employeemanagement.employee.dao;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -123,17 +123,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
             session = SessionProvider.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Employee employee = session.get(Employee.class, employeeId);
-            Course course = session.get(Course.class, courseId);
-            if (employee != null && course != null) {
-                Set<Course> courses = employee.getCourses();
-                if (courses == null) {
-                    courses = new HashSet<>();
-                }
-                courses.add(course);
-                employee.setCourses(courses);
-                session.update(employee);
-                transaction.commit();
+            Course course = session.get(Course.class, courseId);         
+            Set<Course> courses = employee.getCourses();
+            if (courses == null) {
+                courses = new HashSet<>();
             }
+            courses.add(course);
+            employee.setCourses(courses);
+            session.update(employee);
+            transaction.commit();
+            
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();

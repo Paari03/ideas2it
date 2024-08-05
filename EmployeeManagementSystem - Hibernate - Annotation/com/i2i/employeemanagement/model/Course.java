@@ -3,8 +3,20 @@ package com.i2i.employeemanagement.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Id;
 
+/**
+ * Represents a Course in the organization.
+ * This class contains details about the course's ID, name,
+ * and the employees enrolled in the course.
+ * @author Paari
+ */
 @Entity
 @Table(name = "courses")
 public class Course {
