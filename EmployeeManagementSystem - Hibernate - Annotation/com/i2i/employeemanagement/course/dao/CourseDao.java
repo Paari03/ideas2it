@@ -19,7 +19,7 @@ public interface CourseDao {
      *
      * @param course The name of the course. 
      */
-    public void addCourse(String courseName) throws EmployeeException;
+    void addCourse(String courseName) throws EmployeeException;
 
     /**
      * Update the course name  in the database
@@ -29,7 +29,7 @@ public interface CourseDao {
      * @param course
      *     The Updated name of the course. 
      */
-    public void updateCourse(Course course) throws EmployeeException; 
+    void updateCourse(Course course) throws EmployeeException; 
 
     /**
      * Delete the course in the database
@@ -37,7 +37,7 @@ public interface CourseDao {
      * @param courseId 
      *    The Id of the course to be deleted. 
      */
-    public boolean deleteCourse(int courseId) throws EmployeeException; 
+    boolean deleteCourse(int courseId) throws EmployeeException; 
 
     /**
      * Retrieve all the course in the database
@@ -45,7 +45,7 @@ public interface CourseDao {
      * @return Map<Integer, Course>
      *     The course Id as the key and the Course object as the value 
      */
-    public Map<Integer, Course> getAllCourses() throws EmployeeException; 
+    Map<Integer, Course> getAllCourses() throws EmployeeException; 
 
     /**
      * Retrieves  all Employees in a specific course.
@@ -54,5 +54,5 @@ public interface CourseDao {
      * @return  Map<Integer, Employee>
      *     The map of employee IDs and Employee objects.
      */
-    public Map<Integer, Employee> getEmployeesByCourse(int courseId) throws EmployeeException; 
+    Map<Integer, Employee> getEmployeesByCourse(int courseId) throws EmployeeException; 
 }

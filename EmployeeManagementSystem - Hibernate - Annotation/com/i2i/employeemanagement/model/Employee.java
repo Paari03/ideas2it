@@ -8,15 +8,16 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 
 /**
  * Represents an Employee in the organization.
@@ -50,7 +51,7 @@ public class Employee {
     private boolean isDeleted;
 
     @ManyToOne
-    @JoinColumn(name = "department_id", nullable = false)
+    @JoinColumn(name = "department_id")
     private Department department;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -137,6 +138,9 @@ public class Employee {
         this.courses = courses;
     }
 
+    /**
+     * This method will calculate the age according to their birthday.
+     */
     public String getAge() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate birthDate = LocalDate.parse(this.getDob(), formatter);

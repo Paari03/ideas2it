@@ -11,6 +11,7 @@ import com.i2i.employeemanagement.exception.EmployeeException;
  * This class provides methods to interact with the Storage class.
  */
 public interface EmployeeService {
+
     /**
      * Creates a new employee with the given details and returns the generated employee ID.
      *
@@ -28,7 +29,7 @@ public interface EmployeeService {
      * @return int
      *     The generated ID of the newly added employee.
      */
-    public int addEmployee(String name, String dob, int experience, String place, Department department) throws EmployeeException;
+    int addEmployee(String name, String dob, int experience, String place, Department department) throws EmployeeException;
 
     /**
      * Retrieves all employees from the storage.
@@ -39,7 +40,7 @@ public interface EmployeeService {
      * @throws EmployeeException
      *     when Employee is not found
      */
-    public Map<Integer, Employee> getAllEmployees() throws EmployeeException;
+    Map<Integer, Employee> getAllEmployees() throws EmployeeException;
 
     /**
      * Deletes an employee from the storage based on the given id.
@@ -50,7 +51,7 @@ public interface EmployeeService {
      * @return boolean
      *     True if the employee was successfully deleted, else false.
      */
-    public boolean deleteEmployee(int deleteId) throws EmployeeException;
+    boolean deleteEmployee(int deleteId) throws EmployeeException;
 
     /**
      * Updates the details of an employee in the storage.
@@ -60,7 +61,7 @@ public interface EmployeeService {
      * @param employee
      *     The updated employee object with new details.
      */
-    public void updateEmployee(int updateId, Employee employee) throws EmployeeException;
+    void updateEmployee(int updateId, Employee employee) throws EmployeeException;
 
     /**
      * Checks if the employees is empty.
@@ -68,7 +69,7 @@ public interface EmployeeService {
      * @return boolean
      *     True if there are no employees in the storage, else false.
      */
-    public boolean isEmployeeListEmpty() throws EmployeeException;
+    boolean isEmployeeListEmpty() throws EmployeeException;
 
     /**
      * Retrieves an employee by their id.
@@ -79,7 +80,7 @@ public interface EmployeeService {
      * @return Employee
      *     The employee object to the given id.
      */
-    public Employee getEmployee(int id) throws EmployeeException;
+    Employee getEmployee(int id) throws EmployeeException;
 
     /**
      * Retrieves all departments available in the storage.
@@ -87,7 +88,7 @@ public interface EmployeeService {
      * @return Map<Integer, Department>
      *     A map containing all departments keyed by their ids.
      */
-   public  Map<Integer, Department> getAllDepartments() throws EmployeeException;
+    Map<Integer, Department> getAllDepartments() throws EmployeeException;
 
     /**
      * Retrieves all courses available in the storage.
@@ -95,7 +96,7 @@ public interface EmployeeService {
      * @return Map<Integer, Course>
      *     A map containing all courses by their ids.
      */
-    public Map<Integer, Course> getAllCourses() throws EmployeeException;
+    Map<Integer, Course> getAllCourses() throws EmployeeException;
 
     /**
      * Assigns a department based on user choice.
@@ -106,7 +107,7 @@ public interface EmployeeService {
      * @return Department
      *     The department object to the user's choice.
      */
-    public Department getDepartmentById(int departmentChoice) throws EmployeeException;
+    Department getDepartmentById(int departmentChoice) throws EmployeeException;
 
     /**
      * Assigns a course based on user choice.
@@ -117,7 +118,7 @@ public interface EmployeeService {
      * @return Course
      *     The course object to the user's choice.
      */
-    public Course getCourseById(int courseChoice) throws EmployeeException;
+    Course getCourseById(int courseChoice) throws EmployeeException;
 
     /**
      * Assigns a course to an employee.
@@ -127,5 +128,5 @@ public interface EmployeeService {
      * @param courseId
      *     The ID of the course to assign.
      */
-    public void assignCourseToEmployee(int employeeId, int courseId) throws EmployeeException;
+    void assignCourseToEmployee(int employeeId, int courseId) throws EmployeeException;
 }

@@ -15,6 +15,11 @@ import com.i2i.employeemanagement.exception.EmployeeException;
 public class SessionProvider {
     private static SessionFactory sessionFactory = null;
 
+    /**
+     * This Methos is to create the SesionFactory.
+     * @throws 
+     *    -EmployeeException if there is any error in config file.
+     */ 
     public static SessionFactory getSessionFactory() throws EmployeeException {
         if (sessionFactory == null) {
             try {
@@ -26,6 +31,9 @@ public class SessionProvider {
         return sessionFactory;
     }
 
+    /**
+     * This methos is to close the session in the Session Factory.
+     */
     public static void closeSession(Session session) {
         try {
             session.close();

@@ -1,5 +1,8 @@
 package com.i2i.employeemanagement.department.controller;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import java.util.Map;
 import java.util.Scanner;
 
@@ -17,6 +20,7 @@ import com.i2i.employeemanagement.util.EmployeeValidator;
 public class DepartmentController {
     private DepartmentService departmentService = new DepartmentServiceImpl();
     private EmployeeValidator validation = new EmployeeValidator();
+    private static Logger logger = LogManager.getLogger();
     private Scanner scanner = new Scanner(System.in);
 
     /**
@@ -60,7 +64,7 @@ public class DepartmentController {
                         break;
                 }
             } catch (EmployeeException e){
-                System.out.println(e.getMessage());
+                logger.error(e.getMessage());
             } 
         }
     }
@@ -75,7 +79,7 @@ public class DepartmentController {
             departmentName = scanner.nextLine();
         } while (validation.stringValidator( departmentName ));
         departmentService.createDepartment(departmentName);
-        System.out.println("Department created successfully!");
+        logger.info("Department created successfully!");
     }
 
     /**
@@ -94,7 +98,7 @@ public class DepartmentController {
                 }
             }
         } else {
-            System.out.println("No departments available.");
+            logger.info("No departments available.");
         }
     }
 
@@ -113,9 +117,9 @@ public class DepartmentController {
             String departmentName = scanner.nextLine();
             department.setDepartmentName(departmentName);
             departmentService.updateDepartment(departmentId, department);
-            System.out.println("Department updated successfully.");
+            logger.info("Department updated successfully.");
         } else {
-            System.out.println("Department ID not found. Please try again.");
+            logger.info("Department ID not found. Please try again.");
         }
     }
 
@@ -124,14 +128,14 @@ public class DepartmentController {
      */
     public void deleteDepartment() throws EmployeeException {
         if (departmentService.checkDepartment()) {
-            System.out.println("No departments available. Add department .");
+            logger.info("No departments available. Add department .");
         } else {
             displayDepartments();
             System.out.println("Enter the Department ID you want to delete:");
             int departmentId = scanner.nextInt();
             scanner.nextLine();
             if(departmentService.deleteDepartment(departmentId)) {
-                System.out.println("Department deleted successfully.");
+                logger.info("Department deleted successfully.");
             }
         }
     }
@@ -166,7 +170,7 @@ public class DepartmentController {
                                      employee.getPlace(),departmentService.getDepartmentById(departmentId).getDepartmentName());
             }
         } else {
-                System.out.println("No employees found in this department.");
+                logger.info("No employees found in this department.");
         }
     }
 

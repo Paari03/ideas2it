@@ -1,5 +1,8 @@
 package com.i2i.employeemanagement.employee.controller;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import java.util.Map;
@@ -17,9 +20,11 @@ import com.i2i.employeemanagement.exception.EmployeeException;
  * @author Paari
  */
 public class EmployeeController {
+
     private EmployeeService employeeService = new EmployeeServiceImpl();
-    private Scanner scanner = new Scanner(System.in);
     private EmployeeValidator validation = new EmployeeValidator();
+    private static Logger logger = LogManager.getLogger();
+    private Scanner scanner = new Scanner(System.in);
 
     public void employeeFunction() {
         boolean isTrue = true;
@@ -53,7 +58,7 @@ public class EmployeeController {
                         break;
                 }
             } catch (EmployeeException e) {
-                System.out.println(e.getMessage());
+                logger.error(e.getMessage());
             }
         }
     }
@@ -69,6 +74,7 @@ public class EmployeeController {
             System.out.println("Enter Name (Max - 10 Characters): ");
             name = scanner.nextLine();
         } while (validation.stringValidator(name));
+
         String dob = "";
         boolean correctDob;
         do {
@@ -77,17 +83,19 @@ public class EmployeeController {
                 dob = scanner.nextLine();
                 correctDob = validation.dobValidator(dob);
             } catch (DateTimeParseException e) {
-                System.out.println(" Please enter a valid date of birth" 
+                logger.error(" Please enter a valid date of birth" 
                                    + e.getMessage());
                 correctDob = false;
             }
         } while (!correctDob);
+
         int experience;
         do {
             System.out.println("Enter Experience: ");
             experience = scanner.nextInt();
         } while (!validation.experienceValidator(experience));
-        scanner.nextLine(); 
+        scanner.nextLine();
+ 
         String place;
         do {
             System.out.println("Enter Place: ");
@@ -118,17 +126,17 @@ public class EmployeeController {
      */
     public void deleteEmployee() throws EmployeeException {
         if (employeeService.isEmployeeListEmpty()) {
-            System.out.println("There are no Employee Details");
+            logger.info("There are no Employee Details");
         } else {
             displayAllEmployees();
             System.out.println("Enter the Employee ID to Delete: ");
             int deleteId = scanner.nextInt();
 
             if (employeeService.deleteEmployee(deleteId)) {
-                System.out.println("Employee ID removed successfully");
+                logger.info("Employee ID removed successfully");
                 System.out.println("=========================================");
             } else {
-                System.out.println("Employee ID Not Found");
+                logger.info("Employee ID Not Found");
                 System.out.println("========================================");
             }
         }
@@ -140,7 +148,7 @@ public class EmployeeController {
      */
     public void updateEmployee() throws EmployeeException {
         if (employeeService.isEmployeeListEmpty()) {
-            System.out.println("There are no Employee Details.");
+            logger.info("There are no Employee Details.");
             System.out.println("=============================================");
         } else {
             displayAllEmployees();
@@ -175,7 +183,7 @@ public class EmployeeController {
                                 dob = scanner.nextLine();
                                 correctDob = validation.dobValidator(dob);
                             } catch (DateTimeParseException e) {
-                                System.out.println(e.getMessage() + " Please enter a valid date of birth");
+                                logger.error(e.getMessage() + " Please enter a valid date of birth");
                                 correctDob = false;
                             }
                         } while (!correctDob);
@@ -227,10 +235,10 @@ public class EmployeeController {
                 }
 
                 employeeService.updateEmployee(updateId, employee);
-                System.out.println("Employee updated successfully");
+                logger.info("Employee updated successfully");
                 System.out.println("=============================================");
             } else {
-                System.out.println("Employee ID not found.");
+                logger.info("Employee ID not found.");
             }
         }
     }
@@ -273,7 +281,7 @@ public class EmployeeController {
         System.out.format(employeeFormat, "ID", "Name", "Age", "Experience", "Place", "Department","Courses");
  
         if (employees.isEmpty()) {
-            System.out.println("No Employee Details to Display");
+            logger.info("No Employee Details to Display");
         } else {
             for (Employee employee : employees.values()) {
                 StringBuilder courseList = new StringBuilder();
@@ -300,7 +308,7 @@ public class EmployeeController {
     public void displayDepartments() throws EmployeeException {
         Map<Integer, Department> departments = employeeService.getAllDepartments();
         if (departments.isEmpty()) {
-            System.out.println("No Departments to Display");
+            logger.info("No Departments to Display");
         } else {
             System.out.println("List of Departments:");
             System.out.println("-------------------------");
@@ -320,7 +328,7 @@ public class EmployeeController {
     public void displayCourses() throws EmployeeException {
         Map<Integer, Course> courses = employeeService.getAllCourses();
         if (courses.isEmpty()) {
-            System.out.println("No Courses to Display");
+            logger.info("No Courses to Display");
         } else {
             System.out.println("List of Courses:");
             System.out.println("--------------------------------------------------------");

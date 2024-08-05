@@ -19,7 +19,7 @@ public interface CourseService {
      * @param courseName 
      *     The name of the course to be added.
      */
-    public void createCourse(String courseName) throws EmployeeException; 
+    void createCourse(String courseName) throws EmployeeException; 
 
     /**
      * Retrieves all courses from the Storage.
@@ -27,7 +27,7 @@ public interface CourseService {
      * @return Map<Integer, Course>
      *     A map with course ID as key and Course object as value.
      */
-    public Map<Integer, Course> getAllCourses() throws EmployeeException;
+    Map<Integer, Course> getAllCourses() throws EmployeeException;
 
     /**
      * Retrieves a course by its ID.
@@ -37,7 +37,7 @@ public interface CourseService {
      * @return Course
      *     Course with the particular ID.
      */
-    public Course getCourseById(int courseId) throws EmployeeException;
+    Course getCourseById(int courseId) throws EmployeeException;
 
     /**
      * Updates the details of an existing course.
@@ -47,7 +47,7 @@ public interface CourseService {
      * @param course 
      *     The updated Course with new details.
      */
-    public void updateCourse(Course course) throws EmployeeException;
+    void updateCourse(Course course) throws EmployeeException;
 
     /**
      * Deletes a course by its ID.
@@ -57,7 +57,7 @@ public interface CourseService {
      * @return boolean
      *     True if the course was removed else false.
      */
-    public boolean deleteCourse(int id) throws EmployeeException;
+    boolean deleteCourse(int id) throws EmployeeException;
     
     /**
      * Retrieves a course based on the user's choice.
@@ -67,6 +67,5 @@ public interface CourseService {
      * @return Course
      *     Course with the particulaer ID.
      */
- 
-    public Map<Integer, Employee> getEmployeesByCourse(int couseId) throws EmployeeException;
+    Map<Integer, Employee> getEmployeesByCourse(int couseId) throws EmployeeException;
 }
