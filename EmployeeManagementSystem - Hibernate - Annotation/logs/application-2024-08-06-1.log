@@ -1,0 +1,26 @@
+[INFO ] 2024-08-06 11:29:22.802 [main] Version - HHH000412: Hibernate ORM core version 5.6.0.Final
+[WARN ] 2024-08-06 11:29:22.990 [main] deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+[INFO ] 2024-08-06 11:29:23.210 [main] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 11:29:23.351 [main] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 11:29:23.351 [main] pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/EmployeeManage]
+[INFO ] 2024-08-06 11:29:23.351 [main] pooling - HHH10001001: Connection properties: {password=****, user=postgres}
+[INFO ] 2024-08-06 11:29:23.351 [main] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 11:29:23.366 [main] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 11:29:23.555 [main] Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2024-08-06 11:29:24.185 [main] access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7ea2412c] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[INFO ] 2024-08-06 11:29:24.260 [main] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2024-08-06 11:29:30.612 [main] DepartmentController - Department deleted successfully.
+[INFO ] 2024-08-06 11:32:36.728 [main] Version - HHH000412: Hibernate ORM core version 5.6.0.Final
+[WARN ] 2024-08-06 11:32:36.870 [main] deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+[INFO ] 2024-08-06 11:32:37.074 [main] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 11:32:37.184 [main] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 11:32:37.184 [main] pooling - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/EmployeeManage]
+[INFO ] 2024-08-06 11:32:37.184 [main] pooling - HHH10001001: Connection properties: {password=****, user=postgres}
+[INFO ] 2024-08-06 11:32:37.184 [main] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 11:32:37.184 [main] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 11:32:37.372 [main] Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2024-08-06 11:32:37.952 [main] access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7ea2412c] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[INFO ] 2024-08-06 11:32:38.030 [main] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2024-08-06 11:32:38.148 [main] CourseController - Course added successfully!
+[INFO ] 2024-08-06 11:33:37.891 [main] CourseController - Course deleted successfully.
+[INFO ] 2024-08-06 11:34:09.190 [main] CourseController - Course added successfully!
