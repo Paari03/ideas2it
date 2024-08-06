@@ -15,7 +15,7 @@ import com.i2i.employeemanagement.model.Employee;
 public class DepartmentDaoImpl implements DepartmentDao {
 
     @Override
-    public void addDepartment(String departmentName) {
+    public void addDepartment(String departmentName) throws EmployeeException {
         Session session = null;
         Transaction transaction = null;
         try {
@@ -28,7 +28,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            System.out.println("Error adding department: " + e.getMessage());
+            throw new EmployeeException("Error adding the Department Name: " + departmentName, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -37,7 +37,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public Map<Integer, Department> getAllDepartments() {
+    public Map<Integer, Department> getAllDepartments() throws EmployeeException{
         Session session = null;
         Map<Integer, Department> departments = new HashMap<>();
         try {
@@ -47,7 +47,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
                 departments.put(department.getDepartmentId(), department);
             }
         } catch (Exception e) {
-            System.out.println("Error retrieving all departments: " + e.getMessage());
+            throw new EmployeeException("Error retrieving all departments:", e);
         } finally {
             if (session != null) {
                 session.close();
@@ -57,7 +57,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public void updateDepartment(int departmentId, Department department) {
+    public void updateDepartment(int departmentId, Department department) throws EmployeeException {
         Session session = null;
         Transaction transaction = null;
         try {
@@ -69,7 +69,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            System.out.println("Error updating department: " + e.getMessage());
+            throw new EmployeeException("Error updating the departmentId: " + departmentId, e);
         } finally {
             if (session != null) {
                 session.close();
@@ -78,13 +78,13 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public boolean deleteDepartment(int id) {
+    public boolean deleteDepartment(int departmentId) throws EmployeeException {
         Session session = null;
         Transaction transaction = null;
         try {
             session = SessionProvider.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            Department department = session.get(Department.class, id);
+            Department department = session.get(Department.class, departmentId);
             if (department != null) {
                 department.setIsDeleted(true);
                 session.update(department);
@@ -95,7 +95,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            System.out.println("Error deleting department: " + e.getMessage());
+            throw new EmployeeException("Error deleting DepartmentId:" + departmentId, e);
         } finally {
             if (session != null) {
                 session.close();

@@ -24,14 +24,14 @@ public interface EmployeeDao {
      * @param place The place of the employee to be added.
      * @param department The department of the employee to be added.
      */
-    public int addEmployee(String name, String dob, int experience, String place, Department department) throws EmployeeException;
+    int addEmployee(String name, String dob, int experience, String place, Department department) throws EmployeeException;
 
     /**
      * Retrieves all employees from the database.
      *
      * @return Map<Integer, Employee> A map with all employee details.
      */
-    public Map<Integer, Employee> getAllEmployees() throws EmployeeException;
+    Map<Integer, Employee> getAllEmployees() throws EmployeeException;
 
     /**
      * Deletes an employee from the database based on the given ID.
@@ -39,7 +39,7 @@ public interface EmployeeDao {
      * @param id The ID of the employee to delete.
      * @return boolean True if the employee was successfully deleted, else false.
      */
-    public boolean deleteEmployee(int deleteId) throws EmployeeException;
+    boolean deleteEmployee(int deleteId) throws EmployeeException;
 
     /**
      * Updates the details of an employee in the database.
@@ -47,7 +47,7 @@ public interface EmployeeDao {
      * @param id The ID of the employee to update.
      * @param employee The updated employee object with new details.
      */
-    public void updateEmployee(int id, Employee employee) throws EmployeeException;
+    void updateEmployee(int id, Employee employee) throws EmployeeException;
 
     /**
      * Assigns a course to an employee in the database.
@@ -55,5 +55,5 @@ public interface EmployeeDao {
      * @param employeeId The ID of the employee.
      * @param courseId The ID of the course to assign.
      */
-    public void assignCourseToEmployee(int employeeId, int courseId) throws EmployeeException; 
+    void assignCourseToEmployee(int employeeId, int courseId) throws EmployeeException; 
 }

@@ -18,7 +18,7 @@ public interface DepartmentService {
      * @param departmentName 
      *     The name of the department to be added.
      */
-    public void createDepartment(String departmentName) throws EmployeeException;
+    void createDepartment(String departmentName) throws EmployeeException;
 
     /**
      * Retrieves all departments.
@@ -26,7 +26,7 @@ public interface DepartmentService {
      * @return Map<Integer, Department>
      *     A map of department IDs to Department objects.
      */
-    public Map<Integer, Department> getAllDepartments() throws EmployeeException;
+    Map<Integer, Department> getAllDepartments() throws EmployeeException;
 
     /**
      * Updates the details of an department.
@@ -36,7 +36,7 @@ public interface DepartmentService {
      * @param department
      *     The Department object containing updated details.
      */
-    public void updateDepartment(int departmentId, Department department) throws EmployeeException;
+    void updateDepartment(int departmentId, Department department) throws EmployeeException;
 
     /**
      * Deletes a department by ID.
@@ -46,7 +46,7 @@ public interface DepartmentService {
      * @return boolean
      *     true if the department was marked as removed,else false.
      */
-    public boolean deleteDepartment(int departmentId) throws EmployeeException;
+    boolean deleteDepartment(int departmentId) throws EmployeeException;
 
     /**
      * Retrieves a department by ID.
@@ -56,7 +56,7 @@ public interface DepartmentService {
      * @return Department 
      *     The object with the Department ID and Name.
      */
-    public Department getDepartmentById(int departmentId) throws EmployeeException;
+    Department getDepartmentById(int departmentId) throws EmployeeException;
 
     /**
      * Checks if there is departments in the storage.
@@ -64,7 +64,7 @@ public interface DepartmentService {
      * @return boolean
      *     true if no departments are present,else false.
      */
-    public boolean checkDepartment() throws EmployeeException;
+    boolean checkDepartment() throws EmployeeException;
 
     /**
      * Retrieves a employee by department based on user choice.
@@ -74,5 +74,5 @@ public interface DepartmentService {
      * @return Map<Integer,Employee>
      *      with the employee details.
      */    
-    public Map<Integer,Employee> getEmployeeByDepartment(int departmentId)throws EmployeeException;
+    Map<Integer,Employee> getEmployeeByDepartment(int departmentId)throws EmployeeException;
 }

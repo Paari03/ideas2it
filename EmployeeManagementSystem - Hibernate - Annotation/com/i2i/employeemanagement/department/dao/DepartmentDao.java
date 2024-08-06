@@ -19,7 +19,7 @@ public interface DepartmentDao {
      * @param departmentName
      *     It is the name of the department to be added.
      */
-    public void addDepartment(String departmentName) throws EmployeeException;  
+    void addDepartment(String departmentName) throws EmployeeException;  
    
     /**
      * This Method will update the Department to the database;
@@ -28,26 +28,26 @@ public interface DepartmentDao {
      * @param department
      *     It contains both the id and name of the department.
      */
-    public void updateDepartment(int departmentId, Department department) throws EmployeeException; 
+    void updateDepartment(int departmentId, Department department) throws EmployeeException; 
     
     /**
      * This Method will delete the Department to the database;
      * @return boolean
      *     if deleted return true else false
      */
-    public boolean deleteDepartment(int departmentId) throws EmployeeException;
+    boolean deleteDepartment(int departmentId) throws EmployeeException;
 
     /**
      * This Method will get all the Department in the database;
      * @return Map<Integer, Department>
      *     id as a integer and both id and name as department
      */
-    public Map<Integer, Department> getAllDepartments() throws EmployeeException; 
+    Map<Integer, Department> getAllDepartments() throws EmployeeException; 
 
     /**
      * This Method will get employee by Department in the database;
      * @return Map<Integer, Employee>
      *     id as a integer and the employee contails all the detaails
      */
-    public Map<Integer, Employee> getEmployeeByDepartment(int departmentId)throws EmployeeException; 
+    Map<Integer, Employee> getEmployeeByDepartment(int departmentId)throws EmployeeException; 
 }

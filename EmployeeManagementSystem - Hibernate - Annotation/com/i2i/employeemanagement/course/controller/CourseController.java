@@ -1,5 +1,8 @@
 package com.i2i.employeemanagement.course.controller;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import java.util.Map;
 import java.util.Scanner;
 
@@ -18,6 +21,7 @@ import com.i2i.employeemanagement.util.EmployeeValidator;
 public class CourseController {
     private CourseService courseService = new CourseServiceImpl();
     private EmployeeValidator validation = new EmployeeValidator();
+    private static Logger logger = LogManager.getLogger();
     private Scanner scanner = new Scanner(System.in);
 
     /**
@@ -61,7 +65,7 @@ public class CourseController {
                         System.out.println("=============================================");
                 }
             } catch (EmployeeException e) {
-                System.out.println(e.getMessage());
+                logger.error(e.getMessage());
             }
         }
     }
@@ -76,7 +80,7 @@ public class CourseController {
             courseName = scanner.nextLine();
         } while (validation.stringValidator(courseName));
         courseService.createCourse(courseName);
-        System.out.println("Course added successfully!");
+        logger.info("Course added successfully!");
     }
 
     /**
@@ -93,7 +97,7 @@ public class CourseController {
             String courseName = scanner.nextLine();
             course.setCourseName(courseName);
             courseService.updateCourse(course);
-            System.out.println("Course updated successfully.");
+            logger.info("Course updated successfully.");
         } else {
             System.out.println("Course ID not found. Please try again.");
         }
@@ -112,7 +116,7 @@ public class CourseController {
             int courseId = scanner.nextInt();
             scanner.nextLine();
             if (courseService.deleteCourse(courseId)) {
-                System.out.println("Course deleted successfully.");
+                logger.info("Course deleted successfully.");
             } else {
                 System.out.println("Course ID not found. Please try again.");
             }
@@ -132,7 +136,7 @@ public class CourseController {
                 System.out.format(format, course.getCourseId(), course.getCourseName());
             }
         } else {
-            System.out.println("No courses found.");
+            logger.info("No courses found.");
         }
     }
 
@@ -163,7 +167,7 @@ public class CourseController {
                 System.out.format(format, employee.getId(), employee.getName(), courseService.getCourseById(courseId).getCourseName());
             }
         } else {
-            System.out.println("No employees found for course.");
+            logger.info("No employees found for course.");
         }
     }
 }
